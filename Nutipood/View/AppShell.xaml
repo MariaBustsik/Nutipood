@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:Nutipood.View"
+             x:Class="Nutipood.View.AppShell">
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle" TargetType="Element">
+
+                <Setter Property="Shell.ForegroundColor" Value="Blue" />
+                <Setter Property="Shell.TitleColor" Value="Black" />
+                <Setter Property="Shell.DisabledColor" Value="Blue" />
+                <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="Blue"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="Black"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="Black"/>
+            </Style>
+            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
+            <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <TabBar>
+        <ShellContent Title="Avaleht" Route="homePage" ContentTemplate="{DataTemplate local:HomePage}" />
+        <ShellContent Title="Pood" Route="listPage" ContentTemplate="{DataTemplate local:ItemsPage}" />
+        <ShellContent Title="Vaata Ostukorv" Route="ostukorvPage" ContentTemplate="{DataTemplate local:OstukorvPage}" />
+
+    </TabBar>
+
+</Shell>

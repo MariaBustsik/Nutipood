@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Nutipood.View.OstukorvPage"
+                 xmlns:local="clr-namespace:Nutipood.ViewModels"  
+             xmlns:model="clr-namespace:Nutipood.ViewModels"
+             xmlns:model1="clr-namespace:Nutipood.Models">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="MAKSMA" Command="{Binding Makse}"/>
+        <ToolbarItem Text="TÜHISTA OSTUKORV" Command="{Binding EmptyOstukorv}"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame BackgroundColor="#25a5be" Padding="24" CornerRadius="0">
+                <Label Text="Tooded ostukorvis" HorizontalTextAlignment="Center" TextColor="White" FontSize="30"/>
+            </Frame>
+
+            <Label Text="{Binding Count, StringFormat='Kogus:{0}'}"
+                         Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" 
+             FontAttributes="Bold" FontSize="14"
+                               />
+            <Label Text="{Binding Total, StringFormat='Kokku:{0}$'}"
+                         Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" 
+             FontAttributes="Bold" FontSize="14"
+                               />
+
+            <StackLayout Margin="20,35,20,20">
+
+
+                <CollectionView ItemsSource="{Binding Content}">
+                    
+                    <CollectionView.EmptyView>
+                        <Label Text="Korv on tühi" FontSize="Large" FontAttributes="Bold"/>
+                    </CollectionView.EmptyView>
+
+                    <CollectionView.ItemTemplate>
+
+                        <DataTemplate>
+
+                            <Grid Padding="10"
+                            RowDefinitions="Auto, *"
+                            ColumnDefinitions="Auto,*"
+                  BackgroundColor="Azure"
+                                  
+                             x:DataType="model1:SmartDevice">
+
+                                <Image Grid.RowSpan="4"
+                                Source="{Binding ImageUrl}"
+                                Aspect="AspectFit"
+                                HeightRequest="100"
+                                WidthRequest="100" />
+
+                                <Label Grid.Row="0"
+                                       Grid.Column="1"
+                                Text="{Binding Model}"
+                                FontAttributes="Bold"
+                                VerticalOptions="Start"
+                                Padding="10,15,0,0"/>
+                                <Label Grid.Row="1"
+                                Grid.Column="1"
+                                Text="{Binding Tootja}"
+                                VerticalOptions="Start"
+                                Padding="10,0,0,0"/>
+                                <Label Grid.Row="2"
+                                Grid.Column="1"
+                                Text="{Binding Type}"
+                                VerticalOptions="Start"
+                                Padding="10,0,0,0"/>
+                                <Label Grid.Row="3"
+                                Grid.Column="1"
+                                Text="{Binding Hind, StringFormat='Hind: {0}$'}"
+                                VerticalOptions="Start"
+                                Padding="10,0,0,0"/>
+
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                NumberOfTapsRequired="2"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:OstukorvVM}}, Path=Supprimer}"		
+                                CommandParameter="{Binding .}">
+                                    </TapGestureRecognizer>
+                                </Grid.GestureRecognizers>
+
+                            </Grid>
+
+                            
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                   xmlns:local="clr-namespace:Nutipood.ViewModels"  
+             xmlns:model="clr-namespace:Nutipood.ViewModels"
+             xmlns:model1="clr-namespace:Nutipood.Models"
+             x:Class="Nutipood.View.MaksePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <Frame BackgroundColor="#25a5be">
+                    <Label Text="Maksmise leht" FontAttributes="Bold" TextColor="White"
+ FontSize="Large"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand" />
+                </Frame>
+
+            </StackLayout>
+
+            <Grid Padding="10" HeightRequest="320"
+                  RowDefinitions="1*,1*,1*,1*"
+                  ColumnDefinitions="1*,3*"
+                  BackgroundColor="Azure"
+         		x:DataType="model:MaksePageVM">
+
+                <Label Grid.Column="0"
+                       Text="Nimi :"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center" HorizontalOptions="Start"
+                        
+                       />
+                <Entry Grid.Column="1" 
+                       Placeholder="Sisesta nimi"  FontAttributes="Bold"
+                       Text="{Binding AddNimi, Mode=TwoWay}"  
+                      />
+
+                <Label Grid.Row="1" 
+                       Text="Prekonnanimi: "   FontAttributes="Bold"
+                       VerticalOptions="Center" HorizontalOptions="Start"
+                       />
+                <Entry Grid.Row="1" Grid.Column="1" 
+                       Placeholder="Sisesta perekonnanimi"
+                       FontAttributes="Bold"
+                       Text="{Binding AddPerekonnaNimi, Mode=TwoWay}"
+                      />
+                <Label Grid.Row="2" 
+                       Text="Aadress: "
+                       FontAttributes="Bold"
+                       VerticalOptions="Center" HorizontalOptions="Start"
+                       />
+                <Entry Grid.Row="2" Grid.Column="1" 
+                       Placeholder="Sisesta aadress"
+                       FontAttributes="Bold"  
+                       Text="{Binding AddAadress, Mode=TwoWay}"
+                      />
+
+                <Label Grid.Row="3" 
+                       Text="Telefon: "
+                       FontAttributes="Bold"
+                       VerticalOptions="Center" HorizontalOptions="Start"
+                       />
+                <Entry Grid.Row="3" Grid.Column="1"
+                       Placeholder="Sisesta telefon"
+                       FontAttributes="Bold"  
+                       Text="{Binding AddTel, Mode=TwoWay}"
+                      />
+
+                <Label Grid.Row="4" 
+                       Text="E-post: "
+                       FontAttributes="Bold"
+                       VerticalOptions="Center" HorizontalOptions="Start"
+                       />
+                <Entry Grid.Row="4" Grid.Column="1" 
+                       Placeholder="Sisesta e-post"
+                       FontAttributes="Bold"  
+                       Text="{Binding AddEpost, Mode=TwoWay}"
+                      />
+
+                <Label Grid.Row="5" 
+                       Text="Pangakonto number: "
+                       FontAttributes="Bold"
+                       VerticalOptions="Center" HorizontalOptions="Start"
+                       />
+                <Entry Grid.Row="5" Grid.Column="1" x:Name="txtBancaire"
+                       Placeholder="Sisesta pangakonto number"
+                       FontAttributes="Bold"  
+                       Text="{Binding AddPankNumber, Mode=TwoWay }"
+                      />
+
+                <Label Grid.Row="6" 
+                       Text="Maksmisele: "
+                       FontAttributes="Bold"
+                       VerticalOptions="Center" HorizontalOptions="Start"
+                       />
+                <Label Grid.Row="6" Grid.Column="1"
+                       Text="{Binding Summa, StringFormat='{0}$'}"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center" HorizontalOptions="Start"
+                       />
+
+
+            </Grid>
+
+            <StackLayout Orientation="Horizontal">
+                <Button Text="CANCEL" Command="{Binding CmdCancel}" HorizontalOptions="FillAndExpand"></Button>
+                <Button Text="MAKSA" Command="{Binding CmdAdd}" HorizontalOptions="FillAndExpand"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

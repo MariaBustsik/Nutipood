@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:local="clr-namespace:Nutipood.ViewModels"  
+             xmlns:model="clr-namespace:Nutipood.ViewModels"
+             xmlns:model1="clr-namespace:Nutipood.Models"
+             x:Class="Nutipood.View.ArvedPage">
+
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame BackgroundColor="#25a5be" Padding="24" CornerRadius="0">
+                <Label Text="Arvete leht" HorizontalTextAlignment="Center" TextColor="White" FontSize="30"/>
+            </Frame>
+
+            <StackLayout Margin="20,35,20,20">
+
+                <CollectionView ItemsSource="{Binding ListArved}"
+                    SelectionMode="Single">
+                    <CollectionView.ItemTemplate>
+
+                        <DataTemplate>
+
+                            <SwipeView>
+                                <SwipeView.LeftItems>
+                                    <SwipeItems Mode="Execute">
+                                        <SwipeItem Text="Supprimer" BackgroundColor="Red" 
+                                                   Command="{Binding Source={RelativeSource AncestorType={x:Type local:ArvedPageVM}}, Path=Supprimer}"		
+                                CommandParameter="{Binding .}"/>
+                                    </SwipeItems>
+                                </SwipeView.LeftItems>
+
+                                <Grid Padding="10"
+                            RowDefinitions="Auto, *"
+                            ColumnDefinitions="Auto,*"
+                  BackgroundColor="Azure"
+                                  
+                             x:DataType="model1:Arve">
+
+                                    <Image  
+                                Source="{Binding Photo}"
+                                Aspect="AspectFit"
+                                HeightRequest="100"
+                                WidthRequest="100" />
+                                    <StackLayout Orientation="Vertical"
+                                         VerticalOptions="Center"
+                                         HorizontalOptions="End"
+                                         Margin="0,0,10,0"
+                                         Grid.Row="0"
+                                         Grid.Column="1">
+
+
+                                        <Label 
+                                Text="{Binding Id, StringFormat='ID Arve: {0}'}"
+                                FontAttributes="Bold"
+                                VerticalOptions="Start"
+                                Padding="10,15,0,0"/>
+                                        <Label  
+                                Text="{Binding KlientNimi, StringFormat='Kliendi nimi: {0}'}"
+                                VerticalOptions="Start"
+                                Padding="10,0,0,0"/>
+                                        <Label Grid.Row="2"
+                                Grid.Column="1"
+                                Text="{Binding Summa, StringFormat='Summa:{0}$'}"
+                                VerticalOptions="Start"
+                                Padding="10,0,0,0"/>
+                                        <Label  
+                                Text="{Binding TootedStr}"
+                                VerticalOptions="Start"
+                                Padding="10,0,0,0"/>
+
+
+                                    </StackLayout>
+
+
+                                </Grid>
+                            </SwipeView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

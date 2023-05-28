@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Nutipood.View.HomePage">
+    <ContentPage.Content>
+        <Grid BackgroundColor="#25a5be">
+            <StackLayout Margin="0" Padding="0">
+
+                <Image Source="LOGO.jpg" Margin="0" Aspect="AspectFill"/>
+
+
+
+                <Label Text="Tere tulemast meie e-poodi!" FontSize="Large" TextColor="White" FontAttributes="Bold" VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="CenterAndExpand"/>
+                <Label Text="Aadress: Järveotsa tee 13, Tallinn" FontSize="Medium" TextColor="White" FontAttributes="Bold" VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="CenterAndExpand"/>
+                <Label Text="Telefon: 900 88-55" FontSize="Small" TextColor="White" FontAttributes="Bold" VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="CenterAndExpand"/>
+                <Label Text="E-post: nutipood@mail.ru" FontSize="Medium" TextColor="White" FontAttributes="Bold" VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="CenterAndExpand"/>
+
+            </StackLayout>
+        </Grid>
+
+
+
+    </ContentPage.Content>
+</ContentPage>
